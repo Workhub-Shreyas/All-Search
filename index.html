@@ -14,14 +14,19 @@
 
         <link rel="shortcut icon" href="favicon.ico" type="image/png">
 
+        <style>
+            .noscrollbar::-webkit-scrollbar {
+               display: none;
+            }
+        </style>
     </head>
     <body>
-        <div class="container">
-            <div class="row my-3 mt-5">
+        <div class="container-fluid px-5">
+            <div class="row my-4">
                 <h1 class="display-4 w-100 text-center"><strong>All Search</strong></h1>
             </div>    
-            <hr>
-            <div class="row mb-3">
+            <!-- <hr> -->
+            <div class="row my-md-4">
                 <div class="col">
                     <form class="form-inline w-100">
                         <div class="form-group w-100">
@@ -38,36 +43,179 @@
                     </form>
                 </div>
             </div>
-            <div class="row my-5"></div>
-            <div class="row my-5"></div>
-            <div class="row my-5">
-                <div class="col-6">
+            <div class="row my-sm-3">
+                <form class="form-inline w-100">
+                    <div class="col-12">
+                        <div class="form-group w-100">
+                            <!-- Add Aditional Filter Controls Here -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 mb-2">
                     <button class="w-100 btn btn-outline-success" id="iSearch_btn">
-                        <h1 class="display-4">iSearch</h1>
+                        <h1>iSearch</h1>
                     </button>
                 </div>
-                <div class="col-6">
+                <div class="col-md-3 col-xs-12 mb-2">
                     <button class="w-100 btn btn-outline-warning" id="Vox_btn">
-                        <h1 class="display-4">Vox</h1>
+                        <h1>Vox</h1>
                     </button>
                 </div>
-            </div>
-            <div class="row my-5">
-                <div class="col-6">
+                <div class="col-md-3 col-xs-12 mb-2">
                     <button class="w-100 btn btn-outline-danger" id="Veritas_btn">
-                        <h1 class="display-4">Veritas</h1>
+                        <h1>Veritas</h1>
                     </button>
                 </div>
-                <div class="col-6">
+                <div class="col-md-3 col-xs-12 mb-2">
                     <button class="w-100 btn btn-outline-primary" id="Google_btn">
-                        <h1 class="display-4">Google</h1>
+                        <h1>Google</h1>
                     </button>
                 </div>
             </div>
-        </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <hr class="mb-0 pb-0">
+            <div class="row">
+                <div class="col">
+                    <small class="m-0 p-0 text-secondary">Found a total of 6 results in 4 websites :</small>
+                </div>
+            </div>
+            <div class="row my-3" id="results">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h3 class="text-success">Internal Search</h3>
+                </div>
+                <div class="col-md-6 col-lg-3 d-none d-md-block">
+                    <h3 class="text-warning">Vox Community</h3>
+                </div>
+                <div class="col-md-6 col-lg-3 d-none d-lg-block">
+                    <h3 class="text-danger">Veritas Search</h3>
+                </div>
+                <div class="col-md-6 col-lg-3 d-none d-lg-block">
+                    <h3 class="text-primary">Google Search</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-success" style="height: 400px;background-color: rgba(0, 128, 0, 0.200);">
+                    <div class="my-1">
+                        <div class="card my-3 btn-outline-success border border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-success border border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-success border border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-success border border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-md-none">
+                    <h3 class="text-warning">Vox Community</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-warning" style="height: 400px;background-color: rgba(255, 166, 0, 0.200);">
+                    <div class="my-1">
+                        <div class="card my-3 btn-outline-warning border border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-warning border border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-warning border border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-warning border border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 d-md-block d-lg-none">
+                    <h3 class="text-danger">Veritas Search</h3>
+                </div>
+                <div class="col-6 mt-2 d-none d-md-block d-lg-none">
+                    <h3 class="text-primary">Google Search</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-danger" style="height: 400px;background-color: rgba(255, 0, 0, 0.200);">
+                    <div class="my-1">
+                        <div class="card my-3 btn-outline-danger border border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-danger border border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-danger border border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-danger border border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-2 d-bock d-md-none">
+                    <h3 class="text-primary">Google Search</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-primary" style="height: 400px;background-color: rgba(0, 0, 255, 0.200);">
+                    <div class="my-1">
+                        <div class="card my-3 btn-outline-primary border border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-primary border border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                        <div class="card my-3 btn-outline-primary border border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">Title</h5>
+                                <p class="card-text">Content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                    </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
