@@ -35,7 +35,7 @@ function openInNewTab(key){
     console.log("Opening " + element.url + keywords.join("%20"));
     window.open(element.url + keywords.join("%20"), "_blank");
     self.focus();
-    gtag('event', "my_click", {
+    gtag('event', key+"_clicked", {
         'event_category': 'engagement',
         'event_label': key+" clicked",
     });
@@ -60,7 +60,7 @@ $("#central_search").on(
             // $("google-results").innerHTML = 
             search(key);
         });
-        gtag('event', "my_click", {
+        gtag('event', "all_search_clicked", {
             'event_category': 'engagement',
             'event_label': "all_search clicked",
         });
