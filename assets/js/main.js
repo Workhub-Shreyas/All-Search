@@ -35,10 +35,9 @@ function openInNewTab(key){
     console.log("Opening " + element.url + keywords.join("%20"));
     window.open(element.url + keywords.join("%20"), "_blank");
     self.focus();
-    ga('send', 'event', {
-        eventCategory: 'ButtonClick',
-        eventAction: 'click',
-        eventLabel: key+"_clicked"
+    gtag('event', {
+        'event_label': key+" clicked",
+        'event_category': 'ButtonClick',
     });
 }
 
@@ -61,10 +60,9 @@ $("#central_search").on(
             // $("google-results").innerHTML = 
             search(key);
         });
-        ga('send', 'event', {
-            eventCategory: 'CentralSearch',
-            eventAction: 'search',
-            eventLabel: "all_search_clicked"
+        gtag('event', {
+            'event_label': "all_search clicked",
+            'event_category': 'CentralSearch',
         });
     }
 )
