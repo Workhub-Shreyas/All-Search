@@ -35,6 +35,11 @@ function openInNewTab(key){
     console.log("Opening " + element.url + keywords.join("%20"));
     window.open(element.url + keywords.join("%20"), "_blank");
     self.focus();
+    ga('send', 'event', {
+        eventCategory: 'ButtonClick',
+        eventAction: 'click',
+        eventLabel: key+"_clicked"
+    });
 }
 
 Object.getOwnPropertyNames(search_params).forEach(key => {
@@ -55,6 +60,11 @@ $("#central_search").on(
             console.log("Opening " + element.url + keywords.join("%20"));
             // $("google-results").innerHTML = 
             search(key);
+        });
+        ga('send', 'event', {
+            eventCategory: 'CentralSearch',
+            eventAction: 'search',
+            eventLabel: "all_search_clicked"
         });
     }
 )
