@@ -1,15 +1,15 @@
 var keywords = [], search_input = $("#search_query_input");
 
 var search_params = {
-    "vox": {
-        btn: $("#Vox_btn"),
-        url: "https://vox.veritas.com/t5/forums/searchpage/tab/message?q=",
-        color: "success" 
-    },
     "isearch": {
         btn: $("#iSearch_btn"),
         url: "https://isearch.veritas.com/content/internal-search/en_US/search-results.html?q=",
-        color: "warning" 
+        color: "success" 
+    },
+    "vox": {
+        btn: $("#Vox_btn"),
+        url: "https://vox.veritas.com/t5/forums/searchpage/tab/message?q=",
+        color: "warning"
     },
     "veritas": {
         btn: $("#Veritas_btn"),
