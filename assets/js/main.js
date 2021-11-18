@@ -1,15 +1,15 @@
 var keywords = [], search_input = $("#search_query_input");
 
 var search_params = {
-    "vox": {
-        btn: $("#Vox_btn"),
-        url: "https://vox.veritas.com/t5/forums/searchpage/tab/message?q=",
-        color: "success" 
-    },
     "isearch": {
         btn: $("#iSearch_btn"),
         url: "https://isearch.veritas.com/content/internal-search/en_US/search-results.html?q=",
-        color: "warning" 
+        color: "success" 
+    },
+    "vox": {
+        btn: $("#Vox_btn"),
+        url: "https://vox.veritas.com/t5/forums/searchpage/tab/message?q=",
+        color: "warning"
     },
     "veritas": {
         btn: $("#Veritas_btn"),
@@ -36,7 +36,7 @@ function openInNewTab(key){
     window.open(element.url + keywords.join("%20"), "_blank");
     self.focus();
     gtag('event', key+"_clicked", {
-        'event_category': 'click',
+        'event_category': 'engagement',
         'event_label': key+" clicked",
     });
 }
@@ -61,7 +61,7 @@ $("#central_search").on(
             search(key);
         });
         gtag('event', "all_search_clicked", {
-            'event_category': 'click',
+            'event_category': 'engagement',
             'event_label': "all_search clicked",
         });
     }
