@@ -41,12 +41,10 @@ function openInNewTab(key){
     });
 }
 
-Object.getOwnPropertyNames(search_params).forEach(key => {
-    // console.log(search_params[element].url + keywords.join("%20"));
-    element = search_params[key];
-    element.btn.on(
+Object.getOwnPropertyNames(search_params).forEach(site => {
+    search_params[site].btn.on(
         "click",
-        () => openInNewTab(key)
+        () => openInNewTab(site)
     )
 });
 
@@ -54,11 +52,11 @@ $("#central_search").on(
     "submit",
     function (e) {
         e.preventDefault();
-        Object.getOwnPropertyNames(search_params).forEach(key => {
-            element = search_params[key];
-            console.log("Opening " + element.url + keywords.join("%20"));
-            // $("google-results").innerHTML = 
-            search(key);
+        Object.getOwnPropertyNames(search_params).forEach(site => {
+            $(`#${site}-results`)[0].innerHTML = ""
+        });
+        Object.getOwnPropertyNames(search_params).forEach(site => {
+            search(site);
         });
         gtag('event', "all_search_clicked", {
             'event_category': 'engagement',
