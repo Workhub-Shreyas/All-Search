@@ -67,8 +67,8 @@
             </div>
             <div class="row">
                 <div class="col-md-3 col-xs-12 mb-2">
-                    <button class="w-100 btn btn-outline-success" id="iSearch_btn">
-                        <h1>iSearch</h1>
+                    <button class="w-100 btn btn-outline-danger" id="Veritas_btn">
+                        <h1>Veritas</h1>
                     </button>
                 </div>
                 <div class="col-md-3 col-xs-12 mb-2">
@@ -77,15 +77,16 @@
                     </button>
                 </div>
                 <div class="col-md-3 col-xs-12 mb-2">
-                    <button class="w-100 btn btn-outline-danger" id="Veritas_btn">
-                        <h1>Veritas</h1>
-                    </button>
-                </div>
-                <div class="col-md-3 col-xs-12 mb-2">
                     <button class="w-100 btn btn-outline-primary" id="Google_btn">
                         <h1>Google</h1>
                     </button>
                 </div>
+                <div class="col-md-3 col-xs-12 mb-2">
+                    <button class="w-100 btn btn-outline-success" id="iSearch_btn">
+                        <h1>iSearch</h1>
+                    </button>
+                </div>
+                
             </div>
             <hr class="mb-0 pb-0">
             <div class="row">
@@ -95,43 +96,20 @@
             </div>
             <div class="row my-3" id="results">
                 <div class="col-12 col-md-6 col-lg-3">
-                    <h3 class="text-success">Internal Search</h3>
+                    <h3 class="text-danger">Veritas Search</h3>
                 </div>
                 <div class="col-md-6 col-lg-3 d-none d-md-block">
                     <h3 class="text-warning">Vox Community</h3>
                 </div>
                 <div class="col-md-6 col-lg-3 d-none d-lg-block">
-                    <h3 class="text-danger">Veritas Search</h3>
-                </div>
-                <div class="col-md-6 col-lg-3 d-none d-lg-block">
                     <h3 class="text-primary">Google Search</h3>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-success" style="height: 500px;background-color: rgba(0, 128, 0, 0.200);">
-                    <div class="my-1"  id="isearch-results">
-                        <!-- <div class="card my-3 btn-outline-success border border-success">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-success border border-success">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-success border border-success">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-success border border-success">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div> -->
+                <div class="col-md-6 col-lg-3 d-none d-lg-block">
+                    <h3 class="text-success">Internal Search</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-danger" style="height: 500px;background-color: rgba(255, 0, 0, 0.200);">
+                    <div class="my-1"  id="veritas-results">
+                        <!-- Results of Veritas Search -->
                     </div>
                 </div>
                 <div class="col-12 mt-2 col-md-6 col-lg-3 d-md-none">
@@ -139,95 +117,26 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-warning" style="height: 500px;background-color: rgba(255, 166, 0, 0.200);">
                     <div class="my-1"  id="vox-results">
-                        <!-- <div class="card my-3 btn-outline-warning border border-warning">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-warning border border-warning">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-warning border border-warning">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-warning border border-warning">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div> -->
+                        <!-- Results of Vox Search -->
                     </div>
                 </div>
                 <div class="col-12 mt-2 col-md-6 d-md-block d-lg-none">
-                    <h3 class="text-danger">Veritas Search</h3>
+                    <h3 class="text-primary">Google Search</h3>
                 </div>
                 <div class="col-6 mt-2 d-none d-md-block d-lg-none">
-                    <h3 class="text-primary">Google Search</h3>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-danger" style="height: 500px;background-color: rgba(255, 0, 0, 0.200);">
-                    <div class="my-1"  id="veritas-results">
-                        <!-- <div class="card my-3 btn-outline-danger border border-danger">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">
-                                    Content <br>
-                                    <small>link</small>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-danger border border-danger">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-danger border border-danger">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-danger border border-danger">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-12 mt-2 d-bock d-md-none">
-                    <h3 class="text-primary">Google Search</h3>
+                    <h3 class="text-success">Internal Search</h3>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-primary" style="height: 500px;background-color: rgba(0, 0, 255, 0.200);">
                     <div class="my-1"  id="google-results">
-                        <!-- <div class="card my-3 btn-outline-primary border border-primary">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">
-                                    Content <br>
-                                    <small>link</small>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-primary border border-primary">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div>
-                        <div class="card my-3 btn-outline-primary border border-primary">
-                            <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <p class="card-text">Content</p>
-                            </div>
-                        </div> -->
+                        <!-- Results of Google Search  -->
+                    </div>
+                </div>
+                <div class="col-12 mt-2 d-bock d-md-none">
+                    <h3 class="text-success">Internal Search</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 overflow-auto noscrollbar rounded border border-success" style="height: 500px;background-color: rgba(0, 128, 0, 0.200);">
+                    <div class="my-1"  id="isearch-results">
+                        <!-- Results of Internal Search -->
                     </div>
                 </div>
             </div>
