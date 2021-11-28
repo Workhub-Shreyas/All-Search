@@ -1,3 +1,12 @@
+fetch("https://all-search-backend.herokuapp.com/")
+.then((res)=>{
+    if(res)
+        $("#connecting")[0].hidden = true;
+})
+.then(()=>{
+    $("#connected")[0].hidden = false;
+})
+
 var keywords = [], search_input = $("#search_query_input");
 
 var search_params = {
