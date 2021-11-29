@@ -106,7 +106,7 @@ $("#central_search").on(
 )
 
 function refreshCount(){
-    let resCount = $("#query-result-cards").length;
+    let resCount = $(".query-result-cards").length;
     if(resCount === 1)
         $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
     else
