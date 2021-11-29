@@ -5,6 +5,9 @@ fetch("https://all-search-backend.herokuapp.com/")
 })
 .then(()=>{
     $("#connected")[0].hidden = false;
+    window.setTimeout(()=>{
+        $("#connected")[0].hidden = true;
+    }, 10000)
 })
 
 var keywords = [], search_input = $("#search_query_input");
@@ -61,15 +64,26 @@ $("#central_search").on(
     "submit",
     function (e) {
         e.preventDefault();
-        Object.getOwnPropertyNames(search_params).forEach(site => {
-            $(`#${site}-results`)[0].innerHTML = ""
-        });
-        Object.getOwnPropertyNames(search_params).forEach(site => {
-            search(site);
-        });
-        gtag('event', "all_search_clicked", {
-            'event_category': 'engagement',
-            'event_label': "all_search clicked",
-        });
+        
+        var $form = $(this);
+
+        if ($form.data('blocked') !== true) {
+            // mark the form as blocked
+            $form.data('blocked', true);
+
+            Object.getOwnPropertyNames(search_params).forEach(site => {
+                $(`#${site}-results`)[0].innerHTML = "";
+                search(site);
+            });
+            
+            gtag('event', "all_search_clicked", {
+                'event_category': 'engagement',
+                'event_label': "all_search clicked",
+            });
+
+            window.setTimeout(function() {
+                $form.data('blocked', false);
+            }, 4000);
+        }
     }
 )
