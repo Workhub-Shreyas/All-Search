@@ -1,9 +1,9 @@
-async function reconnectServer(){
+function reconnectServer(){
     // hide "disconnected..." message, show "connecting..."
     $("#disconnected")[0].hidden = true;
     $("#connecting")[0].hidden = false;
 
-    await fetch("https://all-search-backend.herokuapp.com/")
+    fetch("https://all-search-backend.herokuapp.com/")
     .then((res)=> res.json())
     .then((res) => {
         // hide "connecting..." and show connected
@@ -19,8 +19,6 @@ async function reconnectServer(){
             }, (5*1000))
         }
     })
-
-    return true;
 }
 
 reconnectServer();
