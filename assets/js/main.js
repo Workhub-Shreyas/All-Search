@@ -1,14 +1,29 @@
-fetch("https://all-search-backend.herokuapp.com/")
-.then((res)=>{
-    if(res)
-        $("#connecting")[0].hidden = true;
-})
-.then(()=>{
-    $("#connected")[0].hidden = false;
-    window.setTimeout(()=>{
-        $("#connected")[0].hidden = true;
-    }, 10000)
-})
+async function reconnectServer(){
+    // hide "disconnected..." message, show "connecting..."
+    $("#disconnected")[0].hidden = true;
+    $("#connecting")[0].hidden = false;
+
+    await fetch("https://all-search-backend.herokuapp.com/")
+    .then((res)=> res.json())
+    .then((res) => {
+        // hide "connecting..." and show connected
+        if(res.working){
+            $("#connecting")[0].hidden = true;
+            $("#connected")[0].hidden = false;
+
+            window.setTimeout(()=>{
+                $("#connected")[0].hidden = true;
+                window.setTimeout(()=>{
+                    $("#disconnected")[0].hidden = false;
+                }, (10*60*1000))
+            }, (5*1000))
+        }
+    })
+
+    return true;
+}
+
+reconnectServer();
 
 var keywords = [], search_input = $("#search_query_input");
 
@@ -66,6 +81,10 @@ $("#central_search").on(
         e.preventDefault();
         
         var $form = $(this);
+
+        if(!$("#disconnected")[0].hidden){
+            await reconnectServer();
+        }
 
         if ($form.data('blocked') !== true) {
             // mark the form as blocked
