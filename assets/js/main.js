@@ -15,7 +15,7 @@ function reconnectServer(){
                 $("#connected")[0].hidden = true;
                 window.setTimeout(()=>{
                     $("#disconnected")[0].hidden = false;
-                }, (10*60*1000))
+                }, (20*60*1000))
             }, (5*1000))
         }
     })
