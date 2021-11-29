@@ -95,18 +95,20 @@ $("#central_search").on(
             
             gtag('event', "all_search_clicked", {
                 'event_category': 'engagement',
-                'event_label': "all_search clicked",
+                'event_label': "all_search clicked",    
             });
 
             window.setTimeout(function() {
                 $form.data('blocked', false);
             }, 4000);
         }
-        let resCount = $("#query-result-cards").length;
-        
-        if(resCount === 1)
-            $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
-        else
-            $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
     }
 )
+
+function refreshCount(){
+    let resCount = $("#query-result-cards").length;
+    if(resCount === 1)
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
+    else
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
+}

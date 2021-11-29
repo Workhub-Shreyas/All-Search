@@ -30,6 +30,7 @@ function search(site){
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        fill_data(site, data.results)
+        fill_data(site, data.results);
+        refreshCount();
     });
 }
