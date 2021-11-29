@@ -83,7 +83,7 @@ $("#central_search").on(
         var $form = $(this);
 
         if(!$("#disconnected")[0].hidden){
-            await reconnectServer();
+            reconnectServer();
         }
 
         if ($form.data('blocked') !== true) {
