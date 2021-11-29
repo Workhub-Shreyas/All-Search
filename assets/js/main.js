@@ -102,5 +102,11 @@ $("#central_search").on(
                 $form.data('blocked', false);
             }, 4000);
         }
+        let resCount = $("#query-result-cards").length;
+        
+        if(resCount === 1)
+            $("result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
+        else
+            $("result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
     }
 )
