@@ -31,9 +31,22 @@
 
             gtag('config', 'G-46C30ZM0Q7');
         </script>
+        <script>
+            if(getCookie("view-mode") === "mobile")
+                alert("This site is unavailable for mobile view. Please view the site in desktop mode.")
+        </script>
+
+        <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-        <div class="container-fluid px-5">
+        <div class="container-fluid float-top" id="alt-container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center">Mobile View Not Supported</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-5" id="main-container">
             <div class="row">
                 <div class="col-1 col-xs-1">
                     <p id="disconnected" class="fixed-top my-0 p-0 rounded-lg px-1 text-danger" style="width: fit-content; background-color: #ff000030;" hidden>disconnected &#10007;</p>
