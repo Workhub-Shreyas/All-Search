@@ -16,7 +16,7 @@
     #main-container{
         visibility: visible;
     }
-    #alt-container{
+    #alt-container, #marquee-mobile{
         display: none;
     }
 }
