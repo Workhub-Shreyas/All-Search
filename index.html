@@ -31,7 +31,6 @@
 
             gtag('config', 'G-46C30ZM0Q7');
         </script>
-
     </head>
     <body>
         <div class="container-fluid px-5">
@@ -51,11 +50,26 @@
                     <form class="form-inline w-100" id="central_search">
                         <div class="form-group w-100">
                             <div class="input-group w-100">
-                                <input type="text" id="search_query_input" class="form-control" placeholder="" aria-describedby="helpId">
+                                <div class="input-group-prepend">
+                                    <button id="selected_product" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Product
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#" onclick="selectProduct('NetBackup')">NetBackup</a>
+                                        <a class="dropdown-item" href="#" onclick="selectProduct('Appliances')">Appliances</a>
+                                    </div>
+                                </div>
+                                <input type="text" id="search_query_input" class="form-control" placeholder="" aria-describedby="helpId" required>
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-dark">
+                                    <button type="submit" class="btn btn-success">
                                         <i class="fa fa-search" aria-hidden="true"></i>
-                                        &nbsp; Search All
+                                        &nbsp;
+                                        Search
+                                    </button>
+                                    <button class="btn btn-dark" id="open_all">
+                                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                                        &nbsp;
+                                        Open All
                                     </button>
                                 </div>
                             </div>
@@ -154,5 +168,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script defer>
+            $("#selected_product")[0].innerHTML = localStorage.getItem("product") || "Select Product";
+        </script>
     </body>
 </html>
