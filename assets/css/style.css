@@ -1,0 +1,22 @@
+@media only screen and (max-width: 470px) {
+    #main-container{
+        display: none;
+    }
+    #alt-container{
+        height: 100vh;
+        
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 470px) {
+    #main-container{
+        visibility: visible;
+    }
+    #alt-container, #marquee-mobile{
+        display: none;
+    }
+}

@@ -71,7 +71,7 @@ function selectProduct(product) {
         else
             keywords[0] = product;
     }
-    console.log(keywords)
+    // console.log(keywords)
 }
 
 search_input.on(
@@ -90,7 +90,7 @@ search_input.on(
             keywords = []
         }
         
-        console.log(keywords)
+        // console.log(keywords)
     }
 )
 
