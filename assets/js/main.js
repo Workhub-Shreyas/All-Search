@@ -1,30 +1,3 @@
-function reconnectServer(){
-    // hide "disconnected..." message, show "connecting..."
-    $("#disconnected")[0].hidden = true;
-    $("#connecting")[0].hidden = false;
-
-    fetch("https://all-search-backend.herokuapp.com/")
-    .then((res)=> res.json())
-    .then((res) => {
-        // hide "connecting..." and show connected
-        if(res.working){
-            $("#connecting")[0].hidden = true;
-            $("#connected")[0].hidden = false;
-
-            window.setTimeout(()=>{
-                $("#connected")[0].hidden = true;
-                window.setTimeout(()=>{
-                    $("#disconnected")[0].hidden = false;
-                }, (20*60*1000))
-            }, (5*1000))
-        }
-    })
-}
-
-reconnectServer();
-
-var keywords = [], search_input = $("#search_query_input");
-
 var search_params = {
     "isearch": {
         btn: $("#iSearch_btn"),
@@ -48,28 +21,90 @@ var search_params = {
     }
 }
 
-search_input.on(
-    "keyup",
-    function (event) {
-        keywords = search_input[0].value.trim().split(" ");
-    }
-)
+var search_sites = Object.getOwnPropertyNames(search_params);
+var search_input = $("#search_query_input");
+var keywords = [];
+
+function reconnectServer() {
+    // hide "disconnected..." message, show "connecting..."
+    $("#disconnected")[0].hidden = true;
+    $("#connecting")[0].hidden = false;
+
+    fetch("https://all-search-backend.herokuapp.com/")
+        .then((res) => res.json())
+        .then((res) => {
+            // hide "connecting..." and show connected
+            if (res.working) {
+                $("#connecting")[0].hidden = true;
+                $("#connected")[0].hidden = false;
+
+                window.setTimeout(() => {
+                    $("#connected")[0].hidden = true;
+                    window.setTimeout(() => {
+                        $("#disconnected")[0].hidden = false;
+                    }, (30 * 60 * 1000))
+                }, (5 * 1000))
+            }
+        })
+}
 
 function openInNewTab(key){
     element = search_params[key];
-    console.log("Opening " + element.url + keywords.join("%20"));
-    window.open(element.url + keywords.join("%20"), "_blank");
-    self.focus();
-    gtag('event', key+"_clicked", {
-        'event_category': 'engagement',
-        'event_label': key+" clicked",
-    });
+    opener = window.open(element.url + keywords.join("%20"), "_blank");
+    return opener;
 }
 
-Object.getOwnPropertyNames(search_params).forEach(site => {
+function refreshCount() {
+    let resCount = $(".query-result-cards").length;
+    if (resCount === 1)
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
+    else
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
+}
+
+function selectProduct(product) {
+    $("#selected_product")[0].innerHTML = product;
+    localStorage.setItem("product", product);
+    if (keywords.length >= 1) {
+        if (keywords[0] !== "Appliances" && keywords[0] !== "NetBackup")
+            keywords = [product, "AND", ...keywords]
+        else
+            keywords[0] = product;
+    }
+    console.log(keywords)
+}
+
+search_input.on(
+    "keyup",
+    function (event) {
+        product = localStorage.getItem("product");
+        keywords = search_input[0].value.trim().split(" ");
+
+        if(keywords.length>0 && keywords[0].length > 0){
+            if(product)
+                keywords = [product, "AND", ...keywords];
+            else
+                keywords = []
+        }
+        else{
+            keywords = []
+        }
+        
+        console.log(keywords)
+    }
+)
+
+search_sites.forEach(site => {
     search_params[site].btn.on(
         "click",
-        () => openInNewTab(site)
+        () => {
+            if (!$("#central_search")[0].reportValidity()) return;
+            openInNewTab(site);
+            gtag('event', key + "_clicked", {
+                'event_category': 'engagement',
+                'event_label': key + " clicked",
+            });
+        }
     )
 });
 
@@ -88,7 +123,7 @@ $("#central_search").on(
             // mark the form as blocked
             $form.data('blocked', true);
 
-            Object.getOwnPropertyNames(search_params).forEach(site => {
+            search_sites.forEach(site => {
                 $(`#${site}-results`)[0].innerHTML = "";
                 search(site);
             });
@@ -105,10 +140,27 @@ $("#central_search").on(
     }
 )
 
-function refreshCount(){
-    let resCount = $(".query-result-cards").length;
-    if(resCount === 1)
-        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
-    else
-        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
-}
+$("#open_all").on(
+    "click",
+    function (e) {
+        if (!$("#central_search")[0].reportValidity()) return;
+        e.preventDefault();
+
+        for(let i=0; i<search_sites.length; i++){
+            site = search_sites[i];
+            $(`#${site}-results`)[0].innerHTML = "";
+            opener = openInNewTab(site);
+            if (!opener || opener.closed || typeof opener.closed === 'undefined') {
+                alert("Popups are Blocked. Please unblock and retry.")
+                break;
+            }
+        };
+
+        gtag('event', "open_all_clicked", {
+            'event_category': 'engagement',
+            'event_label': "open_all clicked",
+        });
+    }
+)
+
+reconnectServer();
