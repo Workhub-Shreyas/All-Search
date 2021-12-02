@@ -26,7 +26,8 @@ function fill_data(site, data) {
 }
 
 function search(site){
-    fetch(`https://all-search-backend.herokuapp.com/search/${site}/${keywords.join('+')}`)
+    query = [...product.get(), ...keywords]
+    fetch(`https://all-search-backend.herokuapp.com/search/${site}/${query.join('+')}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);

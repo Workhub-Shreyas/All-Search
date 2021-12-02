@@ -24,6 +24,21 @@ var search_params = {
 var search_sites = Object.getOwnPropertyNames(search_params);
 var search_input = $("#search_query_input");
 var keywords = [];
+var product = new (class {
+    constructor() { this.value = localStorage.getItem("product") || "NULL"; }
+    get(){
+        if(this.value==="NULL"){
+            return []
+        }
+        else{
+            return [ this.value, "AND" ]
+        }
+    }
+    set(val){
+        this.value = val;
+    }
+})
+
 
 function reconnectServer() {
     // hide "disconnected..." message, show "connecting..."
@@ -50,7 +65,8 @@ function reconnectServer() {
 
 function openInNewTab(key){
     element = search_params[key];
-    opener = window.open(element.url + keywords.join("%20"), "_blank");
+    query = [...product.get(), ...keywords]
+    opener = window.open(element.url + query.join("%20"), "_blank");
     return opener;
 }
 
@@ -62,35 +78,17 @@ function refreshCount() {
         $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
 }
 
-function selectProduct(product) {
-    $("#selected_product")[0].innerHTML = product;
-    localStorage.setItem("product", product);
-    if (keywords.length >= 1) {
-        if (keywords[0] !== "Appliances" && keywords[0] !== "NetBackup")
-            keywords = [product, "AND", ...keywords]
-        else
-            keywords[0] = product;
-    }
-    // console.log(keywords)
+function selectProduct(opt) {
+    $("#selected_product")[0].innerHTML = opt !== "NULL" ? opt :"All Products";
+    localStorage.setItem("product", opt);
+    product.set(opt);
+    return false;
 }
 
 search_input.on(
     "keyup",
     function (event) {
-        product = localStorage.getItem("product");
         keywords = search_input[0].value.trim().split(" ");
-
-        if(keywords.length>0 && keywords[0].length > 0){
-            if(product)
-                keywords = [product, "AND", ...keywords];
-            else
-                keywords = []
-        }
-        else{
-            keywords = []
-        }
-        
-        // console.log(keywords)
     }
 )
 
