@@ -79,7 +79,7 @@ function refreshCount() {
 }
 
 function selectProduct(opt) {
-    $("#selected_product")[0].innerHTML = opt !== "NULL" ? opt :"All Products";
+    $("#selected_product")[0].innerHTML = (opt !== "NULL" ? opt :"All Products");
     localStorage.setItem("product", opt);
     product.set(opt);
     return false;
