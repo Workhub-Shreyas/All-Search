@@ -73,9 +73,9 @@ function openInNewTab(key){
 function refreshCount() {
     let resCount = $(".query-result-cards").length;
     if (resCount === 1)
-        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} result in 4 websites :`;
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results :`;
     else
-        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results in 4 websites :`;
+        $("#result-count-message")[0].innerHTML = `Found a total of ${resCount} results :`;
 }
 
 function selectProduct(opt) {
@@ -114,7 +114,9 @@ $("#central_search").on(
     "submit",
     function (e) {
         e.preventDefault();
-        
+
+        refreshCount();
+
         var $form = $(this);
 
         if(!$("#disconnected")[0].hidden){
