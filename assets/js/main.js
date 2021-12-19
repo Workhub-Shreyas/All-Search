@@ -82,6 +82,10 @@ function selectProduct(opt) {
     $("#selected_product")[0].innerHTML = (opt !== "NULL" ? opt :"All Products");
     localStorage.setItem("product", opt);
     product.set(opt);
+    if(keywords.length > 0){
+        console.log(keywords)
+        $("#central_search").submit();
+    }
     return false;
 }
 
@@ -120,7 +124,7 @@ $("#central_search").on(
         if ($form.data('blocked') !== true) {
             // mark the form as blocked
             $form.data('blocked', true);
-
+            console.log($form.data)
             search_sites.forEach(site => {
                 $(`#${site}-results`)[0].innerHTML = "";
                 search(site);
