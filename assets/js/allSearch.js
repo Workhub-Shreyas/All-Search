@@ -9,17 +9,14 @@ function new_row(data, color) {
     ele.innerHTML = `
         <div class="card-body" onclick="window.open('${data.link}', target='_blank')">
             <h5 class="card-title">${data.title}</h5>
+            <p class="card-text">
+                ${data.snippet}<br>
+                <small class="d-none">${data.link}</small>
+            </p>
         </div>
     `
     return ele;
 }
-
-/*
-    <p class="card-text">
-        ${data.snippet}<br>
-        <small class="d-none">${data.link}</small>
-    </p>
-*/
 
 function fill_data(site, data) {
     $(`#${site}-results`)[0].innerHTML = ""
