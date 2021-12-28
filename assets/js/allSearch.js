@@ -1,4 +1,4 @@
-all_search_backend_url = "https://all-search-backend.herokuapp.com/search/";
+all_search_backend_url = "https://allsearch.shreyas-ashtamkar-backends.com/search/";
 
 function new_row(data, color) {
     var ele = document.createElement("div");
@@ -27,7 +27,7 @@ function fill_data(site, data) {
 
 function search(site){
     query = [...product.get(), ...keywords]
-    fetch(`https://all-search-backend.herokuapp.com/search/${site}/${query.join('+')}`)
+    fetch(`https://allsearch.shreyas-ashtamkar-backends.com/search/${site}/${query.join('+')}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
