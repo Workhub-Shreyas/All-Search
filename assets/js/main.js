@@ -45,7 +45,7 @@ function reconnectServer() {
     $("#disconnected")[0].hidden = true;
     $("#connecting")[0].hidden = false;
 
-    fetch("https://all-search-backend.herokuapp.com/")
+    fetch("https://allsearch.shreyas-ashtamkar-backends.com/")
         .then((res) => res.json())
         .then((res) => {
             // hide "connecting..." and show connected
