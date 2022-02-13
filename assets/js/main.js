@@ -92,6 +92,7 @@ function selectProduct(opt) {
 search_input.on(
     "keyup",
     function (event) {
+        console.log("event triggered");
         keywords = search_input[0].value.trim().split(" ");
     }
 )
@@ -126,7 +127,7 @@ $("#central_search").on(
         if ($form.data('blocked') !== true) {
             // mark the form as blocked
             $form.data('blocked', true);
-            console.log($form.data)
+            // console.log($form.data)
             search_sites.forEach(site => {
                 $(`#${site}-results`)[0].innerHTML = "";
                 search(site);
@@ -166,5 +167,16 @@ $("#open_all").on(
         });
     }
 )
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+});
+
+if (params.q) {
+    console.log(`Works : ${params.q}`);
+    search_query_input = $("#search_query_input");
+    search_query_input[0].value = params.q;
+    keywords = search_query_input[0].value.trim().split(" ");
+}
 
 reconnectServer();
